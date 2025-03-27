@@ -7,7 +7,7 @@ type HeadProps = {
 const Head: React.FC<HeadProps> = ({ title }) => {
   return (
     <Helmet>
-        <p> {title} </p>
+        <title>{title}</title>
     </Helmet>
   )
 }

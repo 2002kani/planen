@@ -1,10 +1,17 @@
 import Head from "@/Components/Head"
+import { SignUp } from "@clerk/clerk-react"
 
 const Register = () => {
   return (
-    <div className="">
-        <Head title="Planen - KI basierte To-Do Listen & Projekt Management App" />
-    </div>
+    <>
+        <Head title="Erstelle ein Account auf Planen" />
+
+        <section>
+          <div className="container flex justify-center">
+            <SignUp signInUrl="/login"/>
+          </div>
+        </section>
+    </>
   )
 }
 
