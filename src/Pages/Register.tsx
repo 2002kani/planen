@@ -4,7 +4,7 @@ import { SignUp } from "@clerk/clerk-react"
 const Register = () => {
   return (
     <>
-        <Head title="Erstelle ein Account auf Planen" />
+        <Head title="Erstelle ein Account auf planen" />
 
         <section>
           <div className="container flex justify-center">

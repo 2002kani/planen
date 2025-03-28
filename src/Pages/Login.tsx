@@ -1,8 +1,10 @@
-
+import Head from "@/Components/Head"
 
 const Login = () => {
   return (
-    <div>Hi</div>
+    <>
+        <Head title="Logge dich ein und nutze planen" />
+    </>
   )
 }
 
