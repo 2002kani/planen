@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router"
 import { useEffect } from "react"
-import { SignedIn, useAuth } from "@clerk/clerk-react"
+import { useAuth } from "@clerk/clerk-react"
 
 const AuthSync = () => {
     const navigate = useNavigate();
@@ -26,7 +26,6 @@ const AuthSync = () => {
 
     return (
         <>
-        
         </>
   )
 }

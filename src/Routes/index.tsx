@@ -30,7 +30,7 @@ const rootRouteChildren: RouteObject[] =  [
 ]
 
 const rootAppChildren: RouteObject[] = [
-
+    
 ]
 
 const router = createBrowserRouter([
