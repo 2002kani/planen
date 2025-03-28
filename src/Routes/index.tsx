@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import RootLayout from "@/Layouts/RootLayout";
+import AppLayout from "@/Layouts/AppLayout";
 
 import Homepage from "@/Pages/Homepage";
 import NotFound from "@/Pages/NotFound";
@@ -28,6 +29,10 @@ const rootRouteChildren: RouteObject[] =  [
     }
 ]
 
+const rootAppChildren: RouteObject[] = [
+
+]
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -35,6 +40,11 @@ const router = createBrowserRouter([
         children: rootRouteChildren,
         errorElement: <NotFound />
     },
+    {
+        path: "/app",
+        element: <AppLayout />,
+        children: rootAppChildren,
+    }
 ])
 
 export default router

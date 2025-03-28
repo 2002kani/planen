@@ -10,6 +10,9 @@ const AuthSync = () => {
         if(!isLoaded) return;
 
         if(!isSignedIn) {
+            if(localStorage.getItem("clerkUserId")){
+                localStorage.removeItem("clerkUserId");
+            }
             navigate("/");
             return;
         }
@@ -22,7 +25,9 @@ const AuthSync = () => {
     }, [userId, isSignedIn, isLoaded])
 
     return (
-        <div>AuthSync</div>
+        <>
+        
+        </>
   )
 }
 
