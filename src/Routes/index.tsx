@@ -5,6 +5,7 @@ import Homepage from "@/Pages/Homepage";
 import NotFound from "@/Pages/NotFound";
 import Register from "@/Pages/Register";
 import Login from "@/Pages/Login";
+import AuthSync from "@/Pages/AuthSync";
 
 import type { RouteObject } from "react-router";
 
@@ -20,6 +21,10 @@ const rootRouteChildren: RouteObject[] =  [
     {
         path: "login",
         element: <Login />
+    },
+    {
+        path: "auth-sync",
+        element: <AuthSync />
     }
 ]
 

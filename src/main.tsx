@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { dark } from '@clerk/themes'
+import { HelmetProvider } from 'react-helmet-async'
 
 import router from './Routes/index.tsx'
 
@@ -17,6 +18,7 @@ if(!PUBLISHABLE_KEY){
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    <HelmetProvider>
     <ClerkProvider 
     publishableKey={PUBLISHABLE_KEY} 
     afterSignOutUrl="/auth-sync"
@@ -25,5 +27,6 @@ createRoot(document.getElementById('root')!).render(
     appearance={{ baseTheme: dark }}>
     <RouterProvider router={router} />
     </ClerkProvider>
+    </HelmetProvider>
   </StrictMode>,
 )
