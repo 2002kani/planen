@@ -1,3 +1,5 @@
+import { useState, useEffect, useCallback } from "react"
+
 import { Card, CardContent, CardFooter } from "./ui/card"
 import { Button } from "./ui/button"
 import { Textarea } from "./ui/textarea"
@@ -10,7 +12,30 @@ import { ScrollArea } from "./ui/scroll-area"
 
 import { CalendarIcon, X, Inbox, Hash, ChevronDown, SendHorizonal } from "lucide-react"
 
-const TaskForm = () => {
+import type { ClassValue } from "clsx"
+import type { TaskForm } from "@/Types/typesIndex"
+
+interface ITaskFormProps {
+    defaultFormData?: TaskForm;
+    className?: ClassValue;
+    mode: "create" | "edit";
+    onCancel?: () => void;
+    onSubmit?: (FormData: TaskForm) => void;
+}
+
+const DEFAULT_FORM_DATA: TaskForm = {
+    content: "",
+    due_date: null,
+    projectId: null
+}
+
+const TaskForm: React.FC<ITaskFormProps> = ({
+    defaultFormData,
+    className,
+    mode,
+    onCancel,
+    onSubmit
+}) => {
   return (
     <Card className="focus:within:border-foreground/30">
         <CardContent className="p-2">

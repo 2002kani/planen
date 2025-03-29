@@ -11,7 +11,7 @@ const TaskFormPopup: React.FC<PropsWithChildren> = ({ children }) => {
         </DialogTrigger>
 
         <DialogContent className="p-0 border-0 rounded-xl">
-            <TaskForm />
+            <TaskForm mode="create" />
         </DialogContent>
     </Dialog>
   )
