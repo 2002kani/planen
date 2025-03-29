@@ -40,7 +40,6 @@ const AppSidebar = () => {
                                 <CirclePlus/> Hinzufügen
                             </SidebarMenuButton>
                         </SidebarMenuItem>
-
                         {SIDEBAR_LINKS.map((item, index) => (
                             <SidebarMenuItem key={index}>
                                 <SidebarMenuButton asChild>
