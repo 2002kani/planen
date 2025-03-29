@@ -23,22 +23,22 @@ export const SOCIAL_LINKS = [
 export const SIDEBAR_LINKS = [
   {
     href: '/app/inbox',
-    label: 'Inbox',
+    label: 'Eingang',
     icon: Inbox,
   },
   {
     href: '/app/today',
-    label: 'Today',
+    label: 'Heute',
     icon: Calendar1,
   },
   {
     href: '/app/upcoming',
-    label: 'Upcoming',
+    label: 'Anstehend',
     icon: CalendarDays,
   },
   {
     href: '/app/completed',
-    label: 'Completed',
+    label: 'Abgeschlossen',
     icon: CircleCheck,
   },
 ] as const;
