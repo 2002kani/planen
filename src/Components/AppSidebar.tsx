@@ -21,6 +21,7 @@ import { CirclePlus, Plus, ChevronUp } from "lucide-react"
 import { SIDEBAR_LINKS } from "@/Utilities/Constants"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
+import TaskFormPopup from "@/Components/TaskFormPopup"
 
 const AppSidebar = () => {
   return (
@@ -35,10 +36,15 @@ const AppSidebar = () => {
             <SidebarGroup>
                 <SidebarGroupContent>
                     <SidebarMenu>
+                    <SidebarGroupLabel asChild className="mt-1">
+                        <p> Produktivität </p>
+                    </SidebarGroupLabel>
                         <SidebarMenuItem>
-                            <SidebarMenuButton>
-                                <CirclePlus/> Hinzufügen
-                            </SidebarMenuButton>
+                            <TaskFormPopup>
+                                <SidebarMenuButton className="!text-primary">
+                                    <CirclePlus/> Hinzufügen
+                                </SidebarMenuButton>
+                            </TaskFormPopup>
                         </SidebarMenuItem>
                         {SIDEBAR_LINKS.map((item, index) => (
                             <SidebarMenuItem key={index}>
@@ -55,8 +61,12 @@ const AppSidebar = () => {
                 </SidebarGroupContent>
             </SidebarGroup>
 
-            <Collapsible className="group/collapsible">
+            <Collapsible defaultOpen className="group/collapsible">
+                <SidebarGroupLabel asChild className="ml-2 mt-2 -mb-1">
+                        <p> Erweiterung </p>
+                </SidebarGroupLabel>
                 <SidebarGroup>
+                    
                     <SidebarGroupLabel asChild className="text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <CollapsibleTrigger> 
                             <ChevronUp className="me-2 transition-transform group-data-[state=open]/collapsible:rotate-180" /> Projekte
