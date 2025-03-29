@@ -41,7 +41,7 @@ const AppSidebar = () => {
                     </SidebarGroupLabel>
                         <SidebarMenuItem>
                             <TaskFormPopup>
-                                <SidebarMenuButton className="!text-primary">
+                                <SidebarMenuButton className="!text-[#7a97e1]">
                                     <CirclePlus/> Hinzufügen
                                 </SidebarMenuButton>
                             </TaskFormPopup>
@@ -61,7 +61,7 @@ const AppSidebar = () => {
                 </SidebarGroupContent>
             </SidebarGroup>
 
-            <Collapsible defaultOpen className="group/collapsible">
+            <Collapsible className="group/collapsible">
                 <SidebarGroupLabel asChild className="ml-2 mt-2 -mb-1">
                         <p> Erweiterung </p>
                 </SidebarGroupLabel>
@@ -86,7 +86,7 @@ const AppSidebar = () => {
                     <CollapsibleContent>
                         <SidebarGroupContent>
                             <SidebarMenu>
-                                <p className="text-muted-foreground text-sm p-2"> Klick + um projekte erstellen</p>
+                                <p className="text-muted-foreground text-sm p-2"> Um Projekte zu erstellen, klicke + </p>
                             </SidebarMenu>
                         </SidebarGroupContent>
                     </CollapsibleContent>
