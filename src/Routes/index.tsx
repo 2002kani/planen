@@ -7,6 +7,7 @@ import NotFound from "@/Pages/NotFound";
 import Register from "@/Pages/Register";
 import Login from "@/Pages/Login";
 import AuthSync from "@/Pages/AuthSync";
+import Inbox from "@/Pages/Inbox";
 
 import type { RouteObject } from "react-router";
 
@@ -30,7 +31,10 @@ const rootRouteChildren: RouteObject[] =  [
 ]
 
 const rootAppChildren: RouteObject[] = [
-    
+    {
+        path: "inbox",
+        element: <Inbox /> 
+    }
 ]
 
 const router = createBrowserRouter([
