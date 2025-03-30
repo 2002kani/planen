@@ -192,7 +192,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
             </Popover>
 
             <div className="flex items-center gap-2">
-                <Button variant="secondary">
+                <Button variant="secondary" onClick={onCancel}>
                     <span className="max-md:hidden"> Abbrechen </span>
                     <X className="md:hidden" />
                 </Button>

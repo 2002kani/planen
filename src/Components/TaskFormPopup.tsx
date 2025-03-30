@@ -1,13 +1,15 @@
 import { useState, type PropsWithChildren } from "react"
-import { useLocation } from "react-router"
+import { useLocation, useFetcher } from "react-router"
+import { startOfToday } from "date-fns"
 
 import { Dialog, DialogContent, DialogTrigger } from "@/Components/ui/dialog"
 import TaskForm from "./TaskForm"
-import { startOfToday } from "date-fns"
 
 const TaskFormPopup: React.FC<PropsWithChildren> = ({ children }) => {
 
   const location = useLocation();
+  const fetcher = useFetcher();
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,6 +26,15 @@ const TaskFormPopup: React.FC<PropsWithChildren> = ({ children }) => {
               }}
               mode="create"
               onCancel={() => setOpen(false)}
+              onSubmit={(formData) => {
+                fetcher.submit(JSON.stringify(formData), {
+                  action: "/app",
+                  method: "POST",
+                  encType: "application/json",
+                });
+
+                setOpen(false);
+              }}
               />
         </DialogContent>
     </Dialog>
