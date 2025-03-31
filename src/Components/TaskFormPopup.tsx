@@ -32,7 +32,6 @@ const TaskFormPopup: React.FC<PropsWithChildren> = ({ children }) => {
                   method: "POST",
                   encType: "application/json",
                 });
-
                 setOpen(false);
               }}
               />
