@@ -23,6 +23,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import TaskFormPopup from "@/Components/TaskFormPopup"
 
+
 const AppSidebar = () => {
   return (
     <Sidebar>
@@ -41,7 +42,7 @@ const AppSidebar = () => {
                     </SidebarGroupLabel>
                         <SidebarMenuItem>
                             <TaskFormPopup>
-                                <SidebarMenuButton className="!text-[#7a97e1]">
+                                <SidebarMenuButton className="!text-[#7999ea]">
                                     <CirclePlus/> Hinzufügen
                                 </SidebarMenuButton>
                             </TaskFormPopup>
