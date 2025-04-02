@@ -90,6 +90,13 @@ const TaskForm: React.FC<ITaskFormProps> = ({
             autoFocus
             value={taskContent}
             onInput={(e) => setTaskContent(e.currentTarget.value)}
+            onKeyDown={(e) => {
+                if(e.key === "Enter"){
+                    e.preventDefault();
+
+                    handleSubmit();
+                }
+            }}
             >
             </Textarea>
 

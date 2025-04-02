@@ -1,7 +1,12 @@
+import Head from "@/Components/Head"
+import TopAppBar from "@/Components/TopAppBar"
 
 const Inbox = () => {
   return (
-    <div>INBOX!</div>
+   <>
+    <Head title="Eingang ToDos - planen"></Head>
+    <TopAppBar />
+   </>
   )
 }
 
