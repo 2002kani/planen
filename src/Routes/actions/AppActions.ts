@@ -1,10 +1,18 @@
 import type { ActionFunction } from "react-router";
 import type { Task } from "@/Types/typesIndex";
+import { databases } from "@/lib/appwrite";
+import { generateID, getUserId } from "@/Service/appActionHelper";
+
+const APPWRITE_DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 
 const createTask = async (data: Task) => {
   try{
-    console.log(data);
-    
+    return await databases.createDocument(
+      APPWRITE_DATABASE_ID,
+      "67ed0d8900282a2be0f4",
+      generateID(),
+      { ...data, userId: getUserId() }
+    );
   } catch(err){
     console.log(err);
   }
