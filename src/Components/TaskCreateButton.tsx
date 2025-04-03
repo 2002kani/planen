@@ -5,7 +5,7 @@ type TaskCreateButtonProps = Omit<React.ButtonHTMLAttributes<HTMLButtonElement>,
 
 const TaskCreateButton: React.FC<TaskCreateButtonProps> = (props) => {
   return (
-    <Button variant="link" className="text-[#628cff]">
+    <Button variant="link" className="text-[#628cff] w-full justify-start mb-4 px-0" {...props}>
         <CirclePlus /> Hinzufügen
     </Button>
   )
