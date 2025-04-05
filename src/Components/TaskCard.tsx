@@ -1,7 +1,9 @@
 import { Models } from "appwrite"
 import { cn } from "@/lib/utils"
 
-import { Check } from "lucide-react"
+import { dateCustomFormat, getTaskDueDateColor } from "@/Service/TaskFormHelper"
+
+import { Check, CalendarDays } from "lucide-react"
 import { Button } from "./ui/button"
 import { Card, CardContent, CardFooter } from "./ui/card"
 
@@ -14,6 +16,7 @@ interface ITaskCardProps {
 }
 
 const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, projectId }) => {
+
   return (
     <div className="">
         <Button 
@@ -30,6 +33,18 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
             />
 
         </Button>
+
+        <Card>
+            <CardContent>
+                <p className={cn("text-sm max-md:me-16", completed && "text-muted-foreground line-through")}>
+                    {content}
+                </p>
+            </CardContent>
+
+            <CardFooter>
+                <div className=""></div>
+            </CardFooter>
+        </Card>
     </div>
   )
 }
