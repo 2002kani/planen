@@ -69,7 +69,6 @@ const TaskForm: React.FC<ITaskFormProps> = ({
         const lastDate = parsedChrono[parsedChrono.length -1];
         setDueDate(lastDate.date())
     }
-    console.log(parsedChrono);
   }, [taskContent])
   
   const handleSubmit = useCallback(() => {
