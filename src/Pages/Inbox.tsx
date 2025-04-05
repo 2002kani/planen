@@ -19,8 +19,6 @@ const Inbox = () => {
   const fetcher = useFetcher();
   const { tasks } = useLoaderData<{ tasks: Models.DocumentList<Models.Document>}>();
 
-  console.log(tasks);
-
   const [taskFormShow, setTaskFormShow] = useState(false);
 
   return (
@@ -35,7 +33,7 @@ const Inbox = () => {
 
       <PageList>
         {tasks.documents.map(({ $id, content, completed, due_date, projectId }) => (
-          <div>Task Card</div>
+          <TaskCard key={$id} content={content} completed={completed} due_date={due_date} projectId={projectId} />
         ))}
 
         {!taskFormShow && <TaskCreateButton onClick={() =>setTaskFormShow(!taskFormShow)}/>}

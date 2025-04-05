@@ -1,7 +1,36 @@
+import { Models } from "appwrite"
+import { cn } from "@/lib/utils"
 
-const TaskCard = () => {
+import { Check } from "lucide-react"
+import { Button } from "./ui/button"
+import { Card, CardContent, CardFooter } from "./ui/card"
+
+interface ITaskCardProps {
+    id: string,
+    content: string,
+    completed: boolean,
+    due_date: Date,
+    projectId: Models.Document | null
+}
+
+const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, projectId }) => {
   return (
-    <div>TaskCard</div>
+    <div className="">
+        <Button 
+        variant="outline" 
+        size="icon"
+        className={cn("group/button rounded-full w-5 h-5 mt-2", completed && "bg-border")}
+        role="checkbox"
+        aria-label={`Markiere Aufgabe als ${completed ? "incomplete" : "complete"}`}
+        aria-describedby="task-content"
+        >
+            <Check
+            strokeWidth={4}
+            className={cn("!w-3 !h-3 text-muted-foreground group-hover/ button:opacity-100 transition-opacity", completed ? "opacity-100" : "opacity-0")}
+            />
+
+        </Button>
+    </div>
   )
 }
 
