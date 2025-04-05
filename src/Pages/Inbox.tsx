@@ -31,7 +31,7 @@ const Inbox = () => {
 
         {!taskFormShow && (
           <EmptyTaskState type="inbox"/>
-        )}
+        )} 
 
         {taskFormShow && (
           <TaskForm 
