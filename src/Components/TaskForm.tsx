@@ -75,7 +75,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
     if(!taskContent) return;
     
     if(onSubmit) onSubmit(formData ?? DEFAULT_FORM_DATA);
-
+    
     setTaskContent("");
   }, [taskContent, onSubmit, formData]);
     

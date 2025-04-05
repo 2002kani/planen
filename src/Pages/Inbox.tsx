@@ -1,5 +1,7 @@
-import { act, useState } from "react"
-import { useFetcher } from "react-router"
+import { useState } from "react"
+import { useFetcher, useLoaderData } from "react-router"
+
+import { Models } from "appwrite"
 
 import Head from "@/Components/Head"
 import TopAppBar from "@/Components/TopAppBar"
@@ -7,12 +9,17 @@ import { Page, PageHeader, PageTitle, PageList } from "@/Components/PageStructur
 import TaskCreateButton from "@/Components/TaskCreateButton"
 import EmptyTaskState from "@/Components/EmptyTaskState"
 import TaskForm from "@/Components/TaskForm"
+import TaskCard from "@/Components/TaskCard"
+
 
 const TITLE_OF_PAGE = "Inbox"
 
 const Inbox = () => {
 
   const fetcher = useFetcher();
+  const { tasks } = useLoaderData<{ tasks: Models.DocumentList<Models.Document>}>();
+
+  console.log(tasks);
 
   const [taskFormShow, setTaskFormShow] = useState(false);
 
@@ -27,6 +34,10 @@ const Inbox = () => {
       </PageHeader>
 
       <PageList>
+        {tasks.documents.map(({ $id, content, completed, due_date, projectId }) => (
+          <div>Task Card</div>
+        ))}
+
         {!taskFormShow && <TaskCreateButton onClick={() =>setTaskFormShow(!taskFormShow)}/>}
 
         {!taskFormShow && (
