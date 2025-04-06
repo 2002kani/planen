@@ -8,6 +8,7 @@ import Register from "@/Pages/Register";
 import Login from "@/Pages/Login";
 import AuthSync from "@/Pages/AuthSync";
 import Inbox from "@/Pages/Inbox";
+import TodayPage from "@/Pages/TodayPage";
 
 import appAction from "@/Routes/actions/AppActions";
 
@@ -39,7 +40,11 @@ const rootAppChildren: RouteObject[] = [
         path: "inbox",
         element: <Inbox />, 
         loader: inboxTaskLoader
-    }
+    },
+    {
+        path: "today",
+        element: <TodayPage />,
+    },
 ]
 
 const router = createBrowserRouter([

@@ -23,7 +23,7 @@ import { SIDEBAR_LINKS } from "@/Utilities/Constants"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import TaskFormPopup from "@/Components/TaskFormPopup"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 
 const AppSidebar = () => {
