@@ -1,6 +1,7 @@
 import { Models } from "appwrite"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
+import { useFetcher } from "react-router"
 
 import { dateCustomFormat, getTaskDueDateColor } from "@/Service/TaskFormHelper"
 import TaskForm from "./TaskForm"
@@ -20,11 +21,14 @@ interface ITaskCardProps {
 
 const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, project }) => {
 
+    const fetcher = useFetcher();
+
     const [taskFormShow, setTaskFormShow] = useState(false);
 
   return (
     <>
-    <div className="group/card relative grid grid-cols-[max-content,minmax(0,1fr)] gap-3 border-b">
+    { !taskFormShow && (
+        <div className="group/card relative grid grid-cols-[max-content,minmax(0,1fr)] gap-3 border-b">
         <Button 
         variant="outline" 
         size="icon"
@@ -72,7 +76,9 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
                         variant="ghost" 
                         size="icon" 
                         className="w-6 h-6 text-muted-foreground" 
-                        aria-label="Bearbeiten">
+                        aria-label="Bearbeiten"
+                        onClick={() => setTaskFormShow(!taskFormShow)}
+                        >
                             <Edit />
                         </Button>
                     </TooltipTrigger>
@@ -86,25 +92,37 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
                         variant="ghost" 
                         size="icon" 
                         className="w-6 h-6 text-muted-foreground" 
-                        aria-label="Bearbeiten">
+                        aria-label="Entfernen"
+                        >
                             <Trash2 />
                         </Button>
                     </TooltipTrigger>
                     <TooltipContent> Aufgabe entfernen </TooltipContent>
                 </Tooltip>
         </div>
-    </div>
+        </div>
+    )}
 
-    <TaskForm
-    className="my-1"
-    defaultFormData={{
-        id,
-        content,
-        due_date: due_date,
-        projectId: project && project?.$id,
-    }}
-    mode="edit"
-    />
+    { taskFormShow && (
+        <TaskForm
+        className="my-1"
+        defaultFormData={{
+            id,
+            content,
+            due_date: due_date,
+            projectId: project && project?.$id,
+        }}
+        mode="edit"
+        onCancel={() => setTaskFormShow(!taskFormShow)}
+        onSubmit={(formData) => {{
+            fetcher.submit(JSON.stringify(formData), {
+                action: "/app", 
+                method: "PUT", 
+                encType: "application/json"
+            })
+        }; setTaskFormShow(!taskFormShow);}}
+        />
+    )}
     </>
   )
 }
