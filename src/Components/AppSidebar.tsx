@@ -1,4 +1,5 @@
 import { Link } from "react-router"
+import { cn } from "@/lib/utils"
 
 import { 
     Sidebar, 
@@ -22,9 +23,13 @@ import { SIDEBAR_LINKS } from "@/Utilities/Constants"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import TaskFormPopup from "@/Components/TaskFormPopup"
+import { useEffect, useState } from "react"
 
 
 const AppSidebar = () => {
+
+    const [activeMenuItem, setActiveMenuItem] = useState<string>("Eingang");
+    
   return (
     <Sidebar>
         <SidebarHeader>
@@ -48,7 +53,11 @@ const AppSidebar = () => {
                             </TaskFormPopup>
                         </SidebarMenuItem>
                         {SIDEBAR_LINKS.map((item, index) => (
-                            <SidebarMenuItem key={index}>
+                            <SidebarMenuItem 
+                            key={index} 
+                            onClick={() => setActiveMenuItem(item.label)}
+                            className={cn(activeMenuItem === item.label ? "bg-sidebar-accent rounded-md" : "")}
+                            >
                                 <SidebarMenuButton asChild>
                                     <Link to={item.href}>
                                         <item.icon />
@@ -66,8 +75,8 @@ const AppSidebar = () => {
                 <SidebarGroupLabel asChild className="ml-2 mt-2 -mb-1">
                         <p> Erweiterung </p>
                 </SidebarGroupLabel>
+
                 <SidebarGroup>
-                    
                     <SidebarGroupLabel asChild className="text-sm text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-accent-foreground">
                         <CollapsibleTrigger> 
                             <ChevronRight className="me-2 transition-transform group-data-[state=open]/collapsible:rotate-90" /> Projekte
