@@ -13,6 +13,7 @@ import TodayPage from "@/Pages/TodayPage";
 import appAction from "@/Routes/actions/AppActions";
 
 import inboxTaskLoader from "./Loaders/InboxLoader";
+import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
 
@@ -44,6 +45,7 @@ const rootAppChildren: RouteObject[] = [
     {
         path: "today",
         element: <TodayPage />,
+        loader: todayTaskLoader
     },
 ]
 

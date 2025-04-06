@@ -35,9 +35,9 @@ const Inbox = () => {
           <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
         ))}
 
-        {!taskFormShow && <TaskCreateButton onClick={() =>setTaskFormShow(!taskFormShow)}/>}
+        {!taskFormShow && <TaskCreateButton onClick={() => setTaskFormShow(!taskFormShow)}/>}
 
-        {!taskFormShow && (
+        {!taskFormShow && !tasks && (
           <EmptyTaskState type="inbox"/>
         )} 
 
