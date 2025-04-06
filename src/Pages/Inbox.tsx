@@ -33,7 +33,7 @@ const Inbox = () => {
 
       <PageList>
         {tasks.documents.map(({ $id, content, completed, due_date, projectId }) => (
-          <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} projectId={projectId} />
+          <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
         ))}
 
         {!taskFormShow && <TaskCreateButton onClick={() =>setTaskFormShow(!taskFormShow)}/>}
