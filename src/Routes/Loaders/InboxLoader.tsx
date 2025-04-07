@@ -56,8 +56,9 @@ const todayTaskLoader: LoaderFunction = async () => {
     return { todayTasks }
 }
 
+// for upcoming tasks - inside router
 const upcomingTaskLoader: LoaderFunction = async () => {
-    const upcomingTasks = await getTasks({completedTasks: true});
+    const upcomingTasks = await getTasks({upcomingTasks: true});
     return { upcomingTasks }
 }
 

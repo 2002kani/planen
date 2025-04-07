@@ -9,6 +9,8 @@ import Login from "@/Pages/Login";
 import AuthSync from "@/Pages/AuthSync";
 import Inbox from "@/Pages/Inbox";
 import TodayPage from "@/Pages/TodayPage";
+import UpcomingPage from "@/Pages/UpcomingPage";
+import CompletedPage from "@/Pages/CompletedPage";
 
 import appAction from "@/Routes/actions/AppActions";
 
@@ -16,8 +18,6 @@ import inboxTaskLoader, { upcomingTaskLoader } from "./Loaders/InboxLoader";
 import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
-import UpcomingPage from "@/Pages/UpcomingPage";
-import CompletedPage from "@/Pages/CompletedPage";
 
 const rootRouteChildren: RouteObject[] =  [
     {
