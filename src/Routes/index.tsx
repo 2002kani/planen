@@ -16,6 +16,8 @@ import inboxTaskLoader from "./Loaders/InboxLoader";
 import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
+import UpcomingPage from "@/Pages/UpcomingPage";
+import CompletedPage from "@/Pages/CompletedPage";
 
 const rootRouteChildren: RouteObject[] =  [
     {
@@ -47,6 +49,14 @@ const rootAppChildren: RouteObject[] = [
         element: <TodayPage />,
         loader: todayTaskLoader
     },
+    {
+        path: "upcoming",
+        element: <UpcomingPage />,
+    },
+    {
+        path: "completed",
+        element: <CompletedPage />,
+    }
 ]
 
 const router = createBrowserRouter([
