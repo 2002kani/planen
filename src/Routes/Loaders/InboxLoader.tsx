@@ -25,7 +25,7 @@ const getTasks = async ({ todayTasks = false, upcomingTasks = false, completedTa
     } 
     else if(upcomingTasks){
         Queries.push(
-            Query.greaterThanEqual("due_date", startOfTomorrow().toISOString())
+            Query.greaterThan("due_date", startOfTomorrow().toISOString())
         )
     } 
     else if(completedTasks){
