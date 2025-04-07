@@ -62,5 +62,11 @@ const upcomingTaskLoader: LoaderFunction = async () => {
     return { upcomingTasks }
 }
 
+// fr completed tasks - inside router
+const completedTasksLoader: LoaderFunction = async () => {
+    const completedTasks = await getTasks({completedTasks: true});
+    return { completedTasks }
+}
+
 export default inboxTaskLoader
-export { todayTaskLoader, upcomingTaskLoader };
+export { todayTaskLoader, upcomingTaskLoader, completedTasksLoader };

@@ -15,8 +15,6 @@ const UpcomingPage = () => {
 
     const { upcomingTasks } = useLoaderData<{ upcomingTasks: Models.DocumentList<Models.Document>}>();
     const [taskFormShow, setTaskFormShow] = useState(false);
-
-    //console.log(upcomingTasks);
     
   return (
     <>

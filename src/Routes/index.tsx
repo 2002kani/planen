@@ -14,7 +14,7 @@ import CompletedPage from "@/Pages/CompletedPage";
 
 import appAction from "@/Routes/actions/AppActions";
 
-import inboxTaskLoader, { upcomingTaskLoader } from "./Loaders/InboxLoader";
+import inboxTaskLoader, { completedTasksLoader, upcomingTaskLoader } from "./Loaders/InboxLoader";
 import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
@@ -57,6 +57,7 @@ const rootAppChildren: RouteObject[] = [
     {
         path: "completed",
         element: <CompletedPage />,
+        loader: completedTasksLoader
     }
 ]
 
