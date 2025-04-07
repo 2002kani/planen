@@ -14,10 +14,7 @@ const TITLE_OF_PAGE = "Heute";
 const TodayPage = () => {
 
    const { todayTasks } = useLoaderData<{ todayTasks: Models.DocumentList<Models.Document>}>(); 
-   const [taskFormShow, setTaskFormShow] = useState(false)
-   
-   console.log(todayTasks);
-   
+   const [taskFormShow, setTaskFormShow] = useState(false)   
 
   return (
     <>

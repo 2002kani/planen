@@ -56,5 +56,10 @@ const todayTaskLoader: LoaderFunction = async () => {
     return { todayTasks }
 }
 
+const upcomingTaskLoader: LoaderFunction = async () => {
+    const upcomingTasks = await getTasks({completedTasks: true});
+    return { upcomingTasks }
+}
+
 export default inboxTaskLoader
-export { todayTaskLoader };
+export { todayTaskLoader, upcomingTaskLoader };
