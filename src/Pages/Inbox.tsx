@@ -11,7 +11,7 @@ import EmptyTaskState from "@/Components/EmptyTaskState"
 import TaskForm from "@/Components/TaskForm"
 import TaskCard from "@/Components/TaskCard"
 
-const TITLE_OF_PAGE = "Inbox"
+const TITLE_OF_PAGE = "Eingang"
 
 const Inbox = () => {
 
@@ -23,7 +23,7 @@ const Inbox = () => {
   return (
    <>
     <Head title="Eingang ToDos - planen"></Head>
-    <TopAppBar title="Inbox" taskCount={tasks.total} />
+    <TopAppBar title="Eingang" taskCount={tasks.total} />
 
     <Page>
       <PageHeader>

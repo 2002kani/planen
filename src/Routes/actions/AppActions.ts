@@ -37,6 +37,22 @@ const updateTask = async (data: Task) => {
   }
 }
 
+const deleteTask = async(data: Task) => {
+  const documentId = data.id;
+
+  if(!documentId) throw new Error("Todo Id nicht gefunden");
+
+  try{
+    return await databases.deleteDocument(
+      APPWRITE_DATABASE_ID,
+      "67ed0d8900282a2be0f4",
+      documentId
+    )
+  }catch(err){
+    console.log(err);
+  }
+}
+
 const appAction: ActionFunction = async ({ request }) => {
   const data = await request.json() as Task;
   if(request.method === "POST"){
@@ -45,6 +61,10 @@ const appAction: ActionFunction = async ({ request }) => {
 
   if(request.method == "PUT"){
     return await updateTask(data);
+  }
+
+  if(request.method == "DELETE"){
+    return await deleteTask(data);
   }
 }
 

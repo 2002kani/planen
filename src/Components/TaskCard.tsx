@@ -93,6 +93,14 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
                         size="icon" 
                         className="w-6 h-6 text-muted-foreground" 
                         aria-label="Entfernen"
+                        onClick={(formData) => {{
+                            fetcher.submit(JSON.stringify(formData), {
+                                action: "/app",
+                                method: "DELETE",
+                                encType: "application/json"
+                            })
+                        };
+                        }}
                         >
                             <Trash2 />
                         </Button>
