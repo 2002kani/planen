@@ -33,7 +33,7 @@ const AppSidebar = () => {
   return (
     <Sidebar>
         <SidebarHeader>
-            <Link to="/app/inbox" className="p-2 bg-[hsl(0,0%,14%)] rounded-md border border-[hsl(0,0%,22%)]">
+            <Link to="/app/inbox" className="p-2 rounded-md border border-[hsl(0,0%,22%)]">
                 <Logo/>
             </Link>
         </SidebarHeader>
