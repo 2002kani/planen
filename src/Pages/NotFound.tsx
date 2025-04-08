@@ -32,8 +32,8 @@ const NotFound = () => {
         <div className="mt-10">
           <img 
           src={pageNotFound} 
-          width={560}
-          height={373}
+          width={500}
+          height={323}
           alt="ERROR 404" 
           className="" />
         </div>

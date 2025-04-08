@@ -3,7 +3,7 @@ import { Calendar1, CircleCheck, CalendarDays, Inbox } from 'lucide-react';
 
 export const SOCIAL_LINKS = [
   {
-    href: 'https://youtube.com/codewithsadee',
+    href: 'https://youtube.com/planen-todoapp',
     label: 'YouTube',
   },
   {
@@ -15,7 +15,7 @@ export const SOCIAL_LINKS = [
     label: 'GitHub',
   },
   {
-    href: 'https://instagram.com/codewithsadee',
+    href: 'https://instagram.com/planen-todoapp',
     label: 'Instagram',
   },
 ] as const;
