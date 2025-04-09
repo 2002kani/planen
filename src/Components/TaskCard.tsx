@@ -43,7 +43,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
             />
 
         </Button>
-
+ 
         <Card className="rounded-none py-2 space-y-1.5 border-none">
             <CardContent className="p-0">
                 <p className={cn("text-sm max-md:me-16", completed && "text-muted-foreground line-through")}>
@@ -52,7 +52,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
             </CardContent>
 
             <CardFooter className="p-0 flex gap-4">
-                { due_date && ( 
+                { due_date && (  
                     <div className={cn("flex items-center gap-1 text-xs text-muted-foreground", getTaskDueDateColor(due_date, completed))}>
                         <CalendarDays size={14} />
                         {dateCustomFormat(due_date)}
