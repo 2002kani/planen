@@ -96,7 +96,7 @@ const AppSidebar = () => {
                     <CollapsibleContent>
                         <SidebarGroupContent>
                             <SidebarMenu>
-                                <p className="text-muted-foreground text-sm p-2"> Um Projekte zu erstellen, klicke + </p>
+                                <p className="text-muted-foreground text-sm p-2"> Klicke + um neue Projekte zu erstellen </p>
                             </SidebarMenu>
                         </SidebarGroupContent>
                     </CollapsibleContent>
