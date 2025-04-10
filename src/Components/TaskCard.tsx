@@ -1,6 +1,6 @@
 import { Models } from "appwrite"
 import { cn } from "@/lib/utils"
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useFetcher } from "react-router"
 
 import { dateCustomFormat, getTaskDueDateColor } from "@/Service/TaskFormHelper"
@@ -25,6 +25,14 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
 
     const [taskFormShow, setTaskFormShow] = useState(false);
 
+    const handleTaskComplete = useCallback(async(completed: boolean) => {
+        return await fetcher.submit(JSON.stringify({id, completed}), {
+            action: "/app",
+            method: "PUT",
+            encType: "application/json"
+        });        
+    }, [id, completed]);
+
   return (
     <>
     { !taskFormShow && (
@@ -36,6 +44,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
         role="checkbox"
         aria-label={`Markiere Aufgabe als ${completed ? "incomplete" : "complete"}`}
         aria-describedby="task-content"
+        onClick={ async () => await handleTaskComplete(!completed)}
         >
             <Check
             strokeWidth={4}
