@@ -24,6 +24,7 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
     const fetcher = useFetcher();
 
     const [taskFormShow, setTaskFormShow] = useState(false);
+    const [isCompleted, setIsCompleted] = useState(completed);
 
     const handleTaskComplete = useCallback(async(completed: boolean) => {
         return await fetcher.submit(JSON.stringify({id, completed}), {
@@ -44,11 +45,15 @@ const TaskCard: React.FC<ITaskCardProps> = ({ id, content, completed, due_date, 
         role="checkbox"
         aria-label={`Markiere Aufgabe als ${completed ? "incomplete" : "complete"}`}
         aria-describedby="task-content"
-        onClick={ async () => await handleTaskComplete(!completed)}
+        onClick={ async () => { 
+            const newState = !isCompleted;
+            setIsCompleted(newState); 
+            await handleTaskComplete(!completed); 
+        }}
         >
             <Check
             strokeWidth={4}
-            className={cn("!w-3 !h-3 text-muted-foreground group-hover/ button:opacity-100 transition-opacity", completed ? "opacity-100" : "opacity-0")}
+            className={cn("!w-3 !h-3 text-muted-foreground group-hover/ button:opacity-100 transition-opacity", completed || isCompleted ? "opacity-100" : "opacity-0")}
             />
 
         </Button>
