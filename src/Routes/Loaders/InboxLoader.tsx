@@ -2,7 +2,7 @@ import { databases, Query } from "@/lib/appwrite";
 
 import { getUserId } from "@/Service/appActionHelper";
 import type { LoaderFunction } from "react-router";
-import { startOfToday, startOfTomorrow } from "date-fns";
+import { endOfTomorrow, startOfToday, startOfTomorrow } from "date-fns";
 
 const APPWRITE_DATABASE_ID = import.meta.env.VITE_APPWRITE_DATABASE_ID;
 const APPWRITE_COLLECTION_ID = import.meta.env.VITE_APPWRITE_COLLECTION_ID;
@@ -25,7 +25,7 @@ const getTasks = async ({ todayTasks = false, upcomingTasks = false, completedTa
     } 
     else if(upcomingTasks){
         Queries.push(
-            Query.greaterThan("due_date", startOfTomorrow().toISOString())
+            Query.greaterThan("due_date", endOfTomorrow().toISOString())  /* maybe change to startOfTomorrow() ?? */
         )
     } 
     else if(completedTasks){
