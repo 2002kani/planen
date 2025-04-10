@@ -24,6 +24,7 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collap
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import TaskFormPopup from "@/Components/TaskFormPopup"
 import { useState } from "react"
+import ProjectFormPopup from "./ProjectFormPopup"
 
 
 const AppSidebar = () => {
@@ -84,11 +85,13 @@ const AppSidebar = () => {
                     </SidebarGroupLabel>
 
                     <Tooltip>
+                        <ProjectFormPopup>
                         <TooltipTrigger asChild>
                             <SidebarGroupAction aria-label="Projekt erstellen">
                                 <Plus />
                             </SidebarGroupAction>
                         </TooltipTrigger>
+                        </ProjectFormPopup>
 
                         <TooltipContent side="right"> Projekt erstellen </TooltipContent>
                     </Tooltip>
