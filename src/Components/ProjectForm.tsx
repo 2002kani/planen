@@ -45,6 +45,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
     const [projectNameCharCount, setProjectNameCharCount] = useState<number>(defaultFormData.name.length);
     const [colorName, setColorName] = useState<string>(defaultFormData.color_name);
     const [colorHex, setColorHex] = useState<string>(defaultFormData.color_hex);
+    const [colorOpen, setColorOpen] = useState(false);
 
   return (
     <Card>
@@ -54,7 +55,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
 
         <Separator />
 
-        <CardContent>
+        <CardContent className="p-4 grid grid-cols-1 gap-2">
             <div>
                 <Label htmlFor="project_name">Name</Label>
                 <Input 
@@ -76,7 +77,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
             <div>
                 <Label htmlFor=""> Farbe </Label>
 
-                <Popover modal={true}>
+                <Popover modal={true} open={colorOpen} onOpenChange={setColorOpen}>
                     <PopoverTrigger asChild>
                         <Button 
                         variant="outline"
@@ -98,7 +99,17 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
 
                                     <CommandGroup>
                                         {PROJECT_COLORS.map(({ name, hex }) => (
-                                            <CommandItem key={name}>
+                                            <CommandItem 
+                                            key={name} 
+                                            value={`${name}=${hex}`}
+                                            onSelect={(value) => {
+                                                const [name, hex] = value.split("=");
+
+                                                setColorName(name);
+                                                setColorHex(hex);
+                                                setColorOpen(false);
+                                            }}
+                                            >
                                                 <Circle fill={hex}/>
 
                                                 {name}
@@ -113,6 +124,14 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
                     </PopoverContent>
                 </Popover>
             </div>
+
+            {mode === "create" && (
+            <div className="">
+                <div className="">
+                    <Bot />
+                </div>
+            </div>
+            )}
         </CardContent>
     </Card>
   )
