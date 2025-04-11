@@ -10,7 +10,7 @@ const ProjectFormPopup = ({ children }) => {
         </DialogTrigger>
 
         <DialogContent className="p-0 border-0 !rounded-xl">
-            <ProjectForm />
+            <ProjectForm mode="edit" />
         </DialogContent>
     </Dialog>
   );
