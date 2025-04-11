@@ -49,7 +49,7 @@ export const PROJECT_COLORS = [
     hex: '#64748b',
   },
   {
-    name: 'Red',
+    name: 'Rot',
     hex: '#ef4444',
   },
   {
@@ -57,27 +57,27 @@ export const PROJECT_COLORS = [
     hex: '#f97316',
   },
   {
-    name: 'Amber',
+    name: 'Bernstein',
     hex: '#f59e0b',
   },
   {
-    name: 'Yellow',
+    name: 'Gelb',
     hex: '#eab308',
   },
   {
-    name: 'Lime',
+    name: 'Limette',
     hex: '#84cc16',
   },
   {
-    name: 'Green',
+    name: 'Grün',
     hex: '#22c55e',
   },
   {
-    name: 'Emerald',
+    name: 'Smaragd',
     hex: '#10b981',
   },
   {
-    name: 'Teal',
+    name: 'Blaugrün',
     hex: '#06b6d4',
   },
   {
@@ -85,11 +85,11 @@ export const PROJECT_COLORS = [
     hex: '#06b6d4',
   },
   {
-    name: 'Sky',
+    name: 'Himmelblau',
     hex: '#0ea5e9',
   },
   {
-    name: 'Blue',
+    name: 'Blau',
     hex: '#06b6d4',
   },
   {
@@ -97,23 +97,23 @@ export const PROJECT_COLORS = [
     hex: '#6366f1',
   },
   {
-    name: 'Violet',
+    name: 'Violett',
     hex: '#8b5cf6',
   },
   {
-    name: 'Purple',
+    name: 'Lila',
     hex: '#a855f7',
   },
   {
-    name: 'Fuchsia',
+    name: 'Fuchsie',
     hex: '#d946ef',
   },
   {
-    name: 'Pink',
+    name: 'Rosa',
     hex: '#ec4899',
   },
   {
-    name: 'Rose',
+    name: 'Rosé',
     hex: '#f43f5e',
   },
 ] as const;
