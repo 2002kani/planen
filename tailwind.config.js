@@ -8,7 +8,8 @@ export default {
   theme: {
   	fontFamily: {
   		sans: [
-  			'Inter',
+			'Inter',
+  			'Roboto Mono',
   			'Sans-serif'
   		]
   	},
