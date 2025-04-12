@@ -11,13 +11,16 @@ import Inbox from "@/Pages/Inbox";
 import TodayPage from "@/Pages/TodayPage";
 import UpcomingPage from "@/Pages/UpcomingPage";
 import CompletedPage from "@/Pages/CompletedPage";
+import Projects from "@/Pages/Projects";
 
 import appAction from "@/Routes/actions/AppActions";
+import ProjectActions from "./actions/ProjectActions";
 
 import inboxTaskLoader, { completedTasksLoader, upcomingTaskLoader } from "./Loaders/InboxLoader";
 import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
+
 
 const rootRouteChildren: RouteObject[] =  [
     {
@@ -58,6 +61,11 @@ const rootAppChildren: RouteObject[] = [
         path: "completed",
         element: <CompletedPage />,
         loader: completedTasksLoader
+    },
+    {
+        path: "projects",
+        element: <Projects />,
+        action: ProjectActions
     }
 ]
 

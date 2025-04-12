@@ -68,6 +68,12 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
     const handleSubmit = useCallback(() => {
         if(onSubmit) onSubmit(formData);
     }, [onSubmit, formData]);
+
+    const handleKeySubmit = useCallback((e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement >) => {
+        if(e.key === "Enter" && !e.shiftKey){
+            handleSubmit();
+        }
+    }, [handleSubmit])
     
 
   return (
@@ -90,7 +96,9 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
                     setProjectNameCharCount(e.currentTarget.value.length);
                 }} 
                 value={projectName} 
-                maxLength={120} />
+                maxLength={120}
+                onKeyDown={handleKeySubmit}
+                />
 
                 <div className={cn("text-xs text-muted-foreground max-w-max ms-auto", projectNameCharCount >= 110 && "text-destructive")}>
                     {projectNameCharCount}/120
@@ -148,7 +156,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
                 </Popover>
             </div>
 
-            {mode === "edit" && (
+            {mode === "create" && (
             <div className="border rounded-md mt-6">
                 <div className="flex items-center gap-3 py-2 px-3">
                     <Bot className="text-muted-foreground flex-shrink-0" />
@@ -171,6 +179,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
                     className="text-sm border-none"
                     value={taskGenPrompt}
                     onChange={(e) => setTaskGenPrompt(e.currentTarget.value)}
+                    onKeyDown={handleKeySubmit}
                     /> 
                 )}
             </div>
@@ -182,7 +191,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
         <CardFooter className="flex justify-end gap-3 p-4">
             <Button variant="secondary" onClick={onCancel}> Abbrechen </Button>
             <Button disabled={!projectName || (aiTaskGen && !taskGenPrompt)} onClick={handleSubmit}>
-                {mode === "edit" ? "Speichern" : "Hinzufügen"}
+                {mode === "create" ? "Hinzufügen" : "Speichern"}
             </Button>
         </CardFooter>
     </Card>
