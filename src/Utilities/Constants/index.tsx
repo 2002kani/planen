@@ -45,7 +45,7 @@ export const SIDEBAR_LINKS = [
 
 export const PROJECT_COLORS = [
   {
-    name: 'Slate',
+    name: 'Standard',
     hex: '#64748b',
   },
   {

@@ -15,7 +15,7 @@ import { Textarea } from "./ui/textarea"
 import { Circle, Check, ChevronDown, Bot } from "lucide-react"
 import { PROJECT_COLORS } from "@/Utilities/Constants"
 
-const DEFAULT_PROJECT_NAME = "Untitled";
+const DEFAULT_PROJECT_NAME = "Unbenannt";
 const DEFAULT_PROJECT_COLOR_NAME = "Slate";
 const DEFAULT_PROJECT_COLOR_HEX = "#64748b";
 
@@ -46,6 +46,14 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
     const [colorName, setColorName] = useState<string>(defaultFormData.color_name);
     const [colorHex, setColorHex] = useState<string>(defaultFormData.color_hex);
     const [colorOpen, setColorOpen] = useState(false);
+    const [aiTaskGen, setAiTaskGen] = useState(false);
+    const [taskGenPrompt, setTaskGenPrompt] = useState<string>("");
+    const [formData, setFormData] = useState<ProjectForm>({
+        ...defaultFormData,
+        ai_task_gen: aiTaskGen,
+        task_gen_prompt: taskGenPrompt,
+    });
+    
 
   return (
     <Card>
@@ -125,14 +133,43 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
                 </Popover>
             </div>
 
-            {mode === "create" && (
-            <div className="">
-                <div className="">
-                    <Bot />
+            {mode === "edit" && (
+            <div className="border rounded-md mt-6">
+                <div className="flex items-center gap-3 py-2 px-3">
+                    <Bot className="text-muted-foreground flex-shrink-0" />
+
+                    <div className="space-y-0.5 me-auto">
+                        <Label htmlFor="ai_generate" className="block text-sm">AI Generieren</Label>
+
+                        <p className="text-xs text-muted-foreground">
+                            Generiere aufgaben automatisch durch einen kurzen prompt.  
+                        </p>
+                    </div>
+
+                    <Switch id="ai_generate" onCheckedChange={setAiTaskGen} />
                 </div>
+
+                {aiTaskGen && ( 
+                    <Textarea 
+                    autoFocus 
+                    placeholder="Erzähle mir von deinem Projekt. Was möchtest du erreichen?" 
+                    className="text-sm border-none"
+                    value={taskGenPrompt}
+                    onChange={(e) => setTaskGenPrompt(e.currentTarget.value)}
+                    /> 
+                )}
             </div>
             )}
         </CardContent>
+
+        <Separator />
+
+        <CardFooter className="flex justify-end gap-3 p-4">
+            <Button variant="secondary" onClick={onCancel}> Abbrechen </Button>
+            <Button disabled={!projectName || (aiTaskGen && !taskGenPrompt)}>
+                {mode === "edit" ? "Speichern" : "Hinzufügen"}
+            </Button>
+        </CardFooter>
     </Card>
   )
 }
