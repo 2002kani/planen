@@ -53,6 +53,21 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
         ai_task_gen: aiTaskGen,
         task_gen_prompt: taskGenPrompt,
     });
+
+    useEffect(() => {
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            name: projectName,
+            color_name: colorName,
+            color_hex: colorHex,
+            ai_task_gen: aiTaskGen,
+            task_gen_prompt: taskGenPrompt
+        }))
+    }, [projectName, colorName, colorHex, aiTaskGen, taskGenPrompt]);
+
+    const handleSubmit = useCallback(() => {
+        if(onSubmit) onSubmit(formData);
+    }, [onSubmit, formData]);
     
 
   return (
@@ -166,7 +181,7 @@ const ProjectForm: React.FC<IProjectFormProps> = ({
 
         <CardFooter className="flex justify-end gap-3 p-4">
             <Button variant="secondary" onClick={onCancel}> Abbrechen </Button>
-            <Button disabled={!projectName || (aiTaskGen && !taskGenPrompt)}>
+            <Button disabled={!projectName || (aiTaskGen && !taskGenPrompt)} onClick={handleSubmit}>
                 {mode === "edit" ? "Speichern" : "Hinzufügen"}
             </Button>
         </CardFooter>

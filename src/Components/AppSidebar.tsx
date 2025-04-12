@@ -85,7 +85,7 @@ const AppSidebar = () => {
                     </SidebarGroupLabel>
 
                     <Tooltip>
-                        <ProjectFormPopup>
+                        <ProjectFormPopup method="POST">
                         <TooltipTrigger asChild>
                             <SidebarGroupAction aria-label="Projekt erstellen">
                                 <Plus />
