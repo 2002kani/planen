@@ -2,7 +2,11 @@ import { Dialog, DialogContent, DialogTrigger } from "./ui/dialog"
 
 import ProjectForm from "./ProjectForm";
 
-const ProjectFormPopup = ({ children }) => {
+interface IProjectFormProps {
+    children: React.ReactNode;
+}
+
+const ProjectFormPopup: React.FC<IProjectFormProps> = ({ children }) => {
   return (
     <Dialog>
         <DialogTrigger asChild>
