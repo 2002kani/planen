@@ -20,6 +20,7 @@ import inboxTaskLoader, { completedTasksLoader, upcomingTaskLoader } from "./Loa
 import { todayTaskLoader } from "./Loaders/InboxLoader";
 
 import type { RouteObject } from "react-router";
+import projectsLoader from "./Loaders/ProjectLoader";
 
 
 const rootRouteChildren: RouteObject[] =  [
@@ -65,7 +66,8 @@ const rootAppChildren: RouteObject[] = [
     {
         path: "projects",
         element: <Projects />,
-        action: ProjectActions
+        action: ProjectActions,
+        loader: projectsLoader
     }
 ]
 

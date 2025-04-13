@@ -24,7 +24,7 @@ const Inbox = () => {
   return (
    <>
     <Head title="Eingang ToDos - planen"></Head>
-    <TopAppBar title="Eingang" taskCount={tasks.total} />
+    <TopAppBar title={TITLE_OF_PAGE} taskCount={tasks.total} />
 
     <Page>
       <PageHeader>

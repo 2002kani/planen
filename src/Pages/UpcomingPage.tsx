@@ -31,7 +31,10 @@ const UpcomingPage = () => {
                 ))}
 
                 {!upcomingTasks && !taskFormShow && (
-                    <EmptyTaskState type="upcoming" />
+                    <>
+                        <EmptyTaskState type="upcoming" />
+                        <h1>hi</h1>
+                    </>
                 )} 
             </PageList>
         </Page>
