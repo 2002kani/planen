@@ -36,7 +36,7 @@ const Inbox = () => {
           <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
         ))}
 
-        { fetcher.state !== "idle" && <TaskCardSkeleton />}
+        {fetcher.state !== "idle" && <TaskCardSkeleton />}
 
         {!taskFormShow && <TaskCreateButton onClick={() => setTaskFormShow(!taskFormShow)}/>}
 
