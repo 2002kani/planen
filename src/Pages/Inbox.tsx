@@ -10,6 +10,7 @@ import TaskCreateButton from "@/Components/TaskCreateButton"
 import EmptyTaskState from "@/Components/EmptyTaskState"
 import TaskForm from "@/Components/TaskForm"
 import TaskCard from "@/Components/TaskCard"
+import TaskCardSkeleton from "@/Components/TaskCardSkeleton"
 
 const TITLE_OF_PAGE = "Eingang"
 
@@ -34,6 +35,8 @@ const Inbox = () => {
         {tasks.documents.map(({ $id, content, completed, due_date, projectId }) => (
           <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
         ))}
+
+        { fetcher.state !== "idle" && <TaskCardSkeleton />}
 
         {!taskFormShow && <TaskCreateButton onClick={() => setTaskFormShow(!taskFormShow)}/>}
 
