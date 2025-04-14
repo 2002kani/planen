@@ -19,7 +19,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({ project }) => {
         className="shrink-0"
         />
 
-        <Link to={`/app/projects/${project.$id}`} className="absolute inset-0 z-10">
+        <Link to={`/app/projects/${project.$id}`} className="inset-0 z-10">
             <p className="text-sm truncate max-w-[48ch]">{project.name}</p>
         </Link>
 
