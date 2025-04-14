@@ -9,6 +9,7 @@ import ProjectFormPopup from "@/Components/ProjectFormPopup"
 import { Button } from "@/Components/ui/button"
 
 import { Plus } from "lucide-react"
+import ProjectCard from "@/Components/ProjectCard"
 
 const TITLE_OF_PAGE = "Projekte";
 
@@ -54,7 +55,9 @@ const Projects = () => {
           </div>
 
           <div className="">
-
+            {projects && projects.documents && projects.documents.map((project) => (
+              <ProjectCard key={project.$id} project={project} />
+            ))}    
           </div>
 
           {projects.total === 0 && (
