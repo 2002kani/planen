@@ -30,7 +30,7 @@ const ProjectActionMenu: React.FC<IProjectActionMenuProps> = ({ children, defaul
             </DropdownMenuItem>
 
             <DropdownMenuItem asChild>
-                <ProjectDeleteButton />
+                <ProjectDeleteButton defaultFormData={defaultFormData} />
             </DropdownMenuItem>
         </DropdownMenuContent>
     </DropdownMenu>
