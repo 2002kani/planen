@@ -42,7 +42,7 @@ const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormD
                 </AlertDialogDescription>
             </AlertDialogHeader>
 
-            <AlertDialogFooter>
+            <AlertDialogFooter> 
                 <AlertDialogCancel> Abbrechen </AlertDialogCancel>
                 <AlertDialogAction> Löschen </AlertDialogAction>
             </AlertDialogFooter>
