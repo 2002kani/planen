@@ -33,8 +33,10 @@ const TodayPage = () => {
                     <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
                 ))}
 
-                {!taskFormShow && !todayTasks && (
-                    <EmptyTaskState type="today" />
+                {!taskFormShow && todayTasks.total === 0 && (
+                    <div className="mt-10">
+                        <EmptyTaskState type="today" />
+                    </div>
                 )}
             </PageList>
         </Page>

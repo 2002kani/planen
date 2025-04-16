@@ -61,7 +61,7 @@ const Projects = () => {
           </div>
 
           {projects.total === 0 && (
-              <div className="mt-8">
+              <div className="mt-10">
                 <EmptyTaskState type="project" />
               </div>
           )}

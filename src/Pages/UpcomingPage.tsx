@@ -30,11 +30,10 @@ const UpcomingPage = () => {
                     <TaskCard key={$id} id={$id} content={content} completed={completed} due_date={due_date} project={projectId} />
                 ))}
 
-                {!upcomingTasks && !taskFormShow && (
-                    <>
+                {upcomingTasks.total === 0 && !taskFormShow && (
+                    <div className="mt-10">
                         <EmptyTaskState type="upcoming" />
-                        <h1>hi</h1>
-                    </>
+                    </div>
                 )} 
             </PageList>
         </Page>

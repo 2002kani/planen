@@ -40,8 +40,8 @@ const Inbox = () => {
 
         {!taskFormShow && <TaskCreateButton onClick={() => setTaskFormShow(!taskFormShow)}/>}
 
-        {!taskFormShow && !tasks && (
-          <EmptyTaskState type="inbox"/>
+        {!taskFormShow && tasks.total === 0 && (
+            <EmptyTaskState type="inbox"/>
         )} 
 
         {taskFormShow && (
