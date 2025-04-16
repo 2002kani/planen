@@ -16,7 +16,7 @@ import { Circle, Check, ChevronDown, Bot } from "lucide-react"
 import { PROJECT_COLORS } from "@/Utilities/Constants"
 
 const DEFAULT_PROJECT_NAME = "Unbenannt";
-const DEFAULT_PROJECT_COLOR_NAME = "Slate";
+const DEFAULT_PROJECT_COLOR_NAME = "Standard";
 const DEFAULT_PROJECT_COLOR_HEX = "#64748b";
 
 const DEFAULT_FORM_DATA: Project = {

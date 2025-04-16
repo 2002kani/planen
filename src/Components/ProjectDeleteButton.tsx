@@ -38,7 +38,7 @@ const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormD
                 <AlertDialogTitle> Projekt löschen? </AlertDialogTitle>
 
                 <AlertDialogDescription>
-
+                    Bist du dir sicher, dass du dein Projekt löschen willst?
                 </AlertDialogDescription>
             </AlertDialogHeader>
 
