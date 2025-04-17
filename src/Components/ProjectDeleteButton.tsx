@@ -1,4 +1,5 @@
 import { useFetcher, useNavigate, useLocation } from "react-router"
+import { useCallback } from "react"
 
 import { Trash2 } from "lucide-react"
 
@@ -23,17 +24,17 @@ interface IProjectDeleteButtonProps {
 const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormData }) => {
     const fetcher = useFetcher();
 
-    const handleDeleteProject = async () => {
+    const handleDeleteProject = useCallback(async () => {
         try{
-            fetcher.submit(JSON.stringify(defaultFormData), {
-                action: "app/projects",
+            await fetcher.submit(defaultFormData, {
+                action: "/app/projects",
                 method: "DELETE",
                 encType: "application/json"
-            })
+            });
         }catch(err){
             console.log("Failed delete attempt: ", err);
         }
-    }
+    }, [defaultFormData])
 
   return (
     <AlertDialog>
@@ -58,7 +59,7 @@ const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormD
 
             <AlertDialogFooter> 
                 <AlertDialogCancel> Abbrechen </AlertDialogCancel>
-                <AlertDialogAction onClick={() => handleDeleteProject}> Löschen </AlertDialogAction>
+                <AlertDialogAction onClick={handleDeleteProject}> Löschen </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>

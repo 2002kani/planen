@@ -76,10 +76,39 @@ const createProject = async (data: ProjectForm) => {
 }
 
 const deleteProject = async (data: ProjectForm) => {
-    try {
+    const projectId = data.id;
 
+    if(!projectId) throw new Error("Es wurde kein Projekt gefunden"); 
+
+    try {
+        await databases.deleteDocument(
+            APPWRITE_DATABASE_ID,
+            "projects",
+            projectId
+        )
     }catch(err){
         console.log("Api Deletion Fail: ", err)
+    }
+}
+
+const updateProject = async (data: ProjectForm) => {
+    const documentId = data.id;
+
+    if(!documentId) throw new Error("Kein Projekt gefunden");
+
+    try{  
+        await databases.updateDocument(
+            APPWRITE_DATABASE_ID,
+            "projects",
+            documentId,
+            {
+                name: data.name,
+                color_name: data.color_name,
+                color_hex: data.color_hex
+            }
+        )
+    }catch(err){
+        console.log("Api Update Attempt: ", err);
     }
 }
 
@@ -90,6 +119,8 @@ const ProjectActions: ActionFunction = async ({ request }) => {
         return await createProject(data);
     } else if(request.method === "DELETE"){
         return await deleteProject(data);
+    } else if(request.method === "PUT"){    
+        return await updateProject(data);
     }
 }  
 
