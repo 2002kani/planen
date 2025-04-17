@@ -75,12 +75,22 @@ const createProject = async (data: ProjectForm) => {
     return redirect(`/app/projects/${project?.$id}`);
 }
 
+const deleteProject = async (data: ProjectForm) => {
+    try {
+
+    }catch(err){
+        console.log("Api Deletion Fail: ", err)
+    }
+}
+
 const ProjectActions: ActionFunction = async ({ request }) => {
     const data = await request.json() as ProjectForm;
 
     if(request.method === "POST"){
         return await createProject(data);
-    } 
+    } else if(request.method === "DELETE"){
+        return await deleteProject(data);
+    }
 }  
 
 export default ProjectActions

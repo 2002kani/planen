@@ -21,6 +21,20 @@ interface IProjectDeleteButtonProps {
 }
 
 const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormData }) => {
+    const fetcher = useFetcher();
+
+    const handleDeleteProject = async () => {
+        try{
+            fetcher.submit(JSON.stringify(defaultFormData), {
+                action: "app/projects",
+                method: "DELETE",
+                encType: "application/json"
+            })
+        }catch(err){
+            console.log("Failed delete attempt: ", err);
+        }
+    }
+
   return (
     <AlertDialog>
         <AlertDialogTrigger>
@@ -44,7 +58,7 @@ const ProjectDeleteButton: React.FC<IProjectDeleteButtonProps> = ({ defaultFormD
 
             <AlertDialogFooter> 
                 <AlertDialogCancel> Abbrechen </AlertDialogCancel>
-                <AlertDialogAction> Löschen </AlertDialogAction>
+                <AlertDialogAction onClick={() => handleDeleteProject}> Löschen </AlertDialogAction>
             </AlertDialogFooter>
         </AlertDialogContent>
     </AlertDialog>

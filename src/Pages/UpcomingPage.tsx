@@ -31,7 +31,7 @@ const UpcomingPage = () => {
                 ))}
 
                 {upcomingTasks.total === 0 && !taskFormShow && (
-                    <div className="mt-10">
+                    <div className="mt-4">
                         <EmptyTaskState type="upcoming" />
                     </div>
                 )} 
