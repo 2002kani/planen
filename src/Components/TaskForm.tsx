@@ -14,7 +14,7 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import { Command, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem } from "./ui/command"
 import { ScrollArea } from "./ui/scroll-area"
 
-import { CalendarIcon, X, Inbox, Hash, ChevronDown, SendHorizonal } from "lucide-react"
+import { CalendarIcon, X, Inbox, Hash, ChevronDown, SendHorizonal, Check } from "lucide-react"
 
 import type { ClassValue } from "clsx"
 import type { TaskForm } from "@/Types/typesIndex"
@@ -56,6 +56,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
 
   const [projectName, setProjectName] = useState("");
   const [projectColorHex, setProjectColorHex] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const [dueDateOpened, setDueDateOpened] = useState(false);
   const [projectOpened, setProjectOpened] = useState(false);
@@ -98,7 +99,14 @@ const TaskForm: React.FC<ITaskFormProps> = ({
     
     setTaskContent("");
   }, [taskContent, onSubmit, formData]);
+
+  const selectedProject = projectId ? projects?.documents.find(project => project.$id === projectId) : null;
     
+  useEffect(() => {
+    if (projectOpened) {
+      setSearchQuery("");
+    }
+  }, [projectOpened]);
 
   return (
     <Card className={cn("focus:within:border-foreground/30", className)}>
@@ -170,7 +178,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
             <Popover modal open={projectOpened} onOpenChange={setProjectOpened}>
                 <PopoverTrigger asChild>
                     <Button variant="ghost" size="sm" role="comobox" aria-expanded={projectOpened} className="max-w-max">
-                        <Inbox /> Eingänge <ChevronDown />
+                        <Inbox style={{ color: projectColorHex }} /> {projectName || "Eingang"} <ChevronDown />
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-[240px] p-0" align="start">
@@ -181,36 +189,31 @@ const TaskForm: React.FC<ITaskFormProps> = ({
                                 <CommandEmpty> Kein Projekt gefunden </CommandEmpty>
 
                                 <CommandGroup>
-                                <CommandItem>
-                                        <Hash /> Projekt 1
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 2
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 3
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 4
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 5
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 6
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 7
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 8
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 9
-                                    </CommandItem>
-                                    <CommandItem>
-                                        <Hash /> Projekt 10
-                                    </CommandItem>
+                                    {projects && projects.documents && projects.documents
+                                        .filter(project => 
+                                            project.name.toLowerCase().includes(searchQuery.toLowerCase())
+                                        )
+                                        .map((project) => (
+                                            <CommandItem
+                                                key={project.$id}
+                                                className="cursor-pointer"
+                                                onSelect={() => {
+                                                    const isAlreadySelected = project.$id === projectId;
+                                                    
+                                                    setProjectId(isAlreadySelected ? null : project.$id);
+                                                    setProjectName(isAlreadySelected ? "" : project.name);
+                                                    setProjectColorHex(isAlreadySelected ? "" : project.color_hex);
+                                                    setProjectOpened(false);
+                                                }}
+                                            >
+                                                <Hash style={{color: project.color_hex}} /> 
+                                                <span>{project.name}</span>
+                                                {project.$id === projectId && (
+                                                    <span className="ml-auto"><Check/></span>
+                                                )}
+                                            </CommandItem>
+                                        ))
+                                    }
                                 </CommandGroup>
                             </ScrollArea>
                         </CommandList>
