@@ -103,6 +103,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
                 <Popover
                 open={dueDateOpened}
                 onOpenChange={setDueDateOpened}
+                modal={true}
                 >
                     <PopoverTrigger asChild>
                         <Button 
