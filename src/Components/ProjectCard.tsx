@@ -21,7 +21,7 @@ const ProjectCard: React.FC<IProjectCardProps> = ({ project, variant = "default"
         <Hash
         size={16}
         color={project.color_hex}
-        className="shrink-0"
+        className={cn("shrink-0", isCompact && "h-3.5")}
         />
 
         <Link to={`/app/projects/${project.$id}`} className="inset-0 z-10">
