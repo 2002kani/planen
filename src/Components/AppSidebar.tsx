@@ -1,5 +1,8 @@
 import { Link } from "react-router"
 import { cn } from "@/lib/utils"
+import { useState } from "react"
+import { Models } from "appwrite"
+import { useLoaderData } from "react-router"
 
 import { 
     Sidebar, 
@@ -23,13 +26,19 @@ import { SIDEBAR_LINKS } from "@/Utilities/Constants"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible"
 import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip"
 import TaskFormPopup from "@/Components/TaskFormPopup"
-import { useState } from "react"
 import ProjectFormPopup from "./ProjectFormPopup"
+import ProjectCard from "./ProjectCard"
 
+type DataType = {
+    projects: Models.DocumentList<Models.Document>;
+}
 
 const AppSidebar = () => {
 
     const [activeMenuItem, setActiveMenuItem] = useState<string>("Eingang");
+
+    const loaderData = useLoaderData() as DataType;
+    const { projects } = loaderData
     
   return (
     <Sidebar>
@@ -99,7 +108,11 @@ const AppSidebar = () => {
                     <CollapsibleContent>
                         <SidebarGroupContent>
                             <SidebarMenu>
-                                <p className="text-muted-foreground text-sm p-2"> Klicke + um neue Projekte zu erstellen </p>
+                            <div className="mt-1">
+                                {projects && projects.documents && projects.documents.map((project) => (
+                                    <ProjectCard key={project.$id} project={project} variant="compact"/>
+                                ))}
+                                </div>
                             </SidebarMenu>
                         </SidebarGroupContent>
                     </CollapsibleContent>

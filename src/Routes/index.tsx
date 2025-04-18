@@ -84,6 +84,7 @@ const router = createBrowserRouter([
         children: rootAppChildren,
         errorElement: <NotFound />,
         action: appAction,
+        loader: projectsLoader
     }
 ])
 
