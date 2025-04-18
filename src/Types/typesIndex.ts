@@ -29,7 +29,7 @@ type Project = {
     due_date: Date | null;
     completed?: boolean;
     project?: string | null;
-    projectId: number | null;
+    projectId: string | number | null;
   }
   
   export type { Project, ProjectForm, Task, TaskForm }

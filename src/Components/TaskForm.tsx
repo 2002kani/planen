@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from "react"
 import * as chrono from 'chrono-node';
 import { cn } from "@/lib/utils";
+import { useLoaderData } from "react-router";
+import { Models } from "appwrite";
 
 import { Card, CardContent, CardFooter } from "./ui/card"
 import { Button } from "./ui/button"
@@ -33,6 +35,10 @@ const DEFAULT_FORM_DATA: TaskForm = {
     projectId: null,
 }
 
+type DataType = {
+  projects: Models.DocumentList<Models.Document>;
+}
+
 const TaskForm: React.FC<ITaskFormProps> = ({
     defaultFormData = DEFAULT_FORM_DATA,
     className,
@@ -40,6 +46,9 @@ const TaskForm: React.FC<ITaskFormProps> = ({
     onCancel,
     onSubmit
 }) => {
+
+    const loaderData = useLoaderData() as DataType;
+    const { projects } = loaderData
 
   const [taskContent, setTaskContent] = useState(defaultFormData?.content);
   const [dueDate, setDueDate] = useState(defaultFormData?.due_date);
@@ -52,6 +61,17 @@ const TaskForm: React.FC<ITaskFormProps> = ({
   const [projectOpened, setProjectOpened] = useState(false);
 
   const [formData, setFormData] = useState(defaultFormData);
+
+  useEffect(() => {
+    if(projectId && projects?.documents.length){
+        const selectedProject = projects.documents.find((project) => project.$id === projectId)
+
+        if(selectedProject){
+            setProjectName(selectedProject.name);
+            setProjectColorHex(selectedProject.color_hex);
+        }
+    }
+  }, [projects, projectId])
 
   useEffect(() => {
     setFormData((prevFormData) => ({
@@ -161,7 +181,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
                                 <CommandEmpty> Kein Projekt gefunden </CommandEmpty>
 
                                 <CommandGroup>
-                                    <CommandItem>
+                                <CommandItem>
                                         <Hash /> Projekt 1
                                     </CommandItem>
                                     <CommandItem>
