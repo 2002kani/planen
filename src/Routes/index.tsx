@@ -18,9 +18,11 @@ import ProjectActions from "./actions/ProjectActions";
 
 import inboxTaskLoader, { completedTasksLoader, upcomingTaskLoader } from "./Loaders/InboxLoader";
 import { todayTaskLoader } from "./Loaders/InboxLoader";
+import projectsLoader from "./Loaders/ProjectLoader";
+import ProjectDetails from "@/Pages/ProjectDetails";
+import ProjectDetailsLoader from "./Loaders/ProjectDetailsLoader";
 
 import type { RouteObject } from "react-router";
-import projectsLoader from "./Loaders/ProjectLoader";
 
 
 const rootRouteChildren: RouteObject[] =  [
@@ -68,6 +70,11 @@ const rootAppChildren: RouteObject[] = [
         element: <Projects />,
         action: ProjectActions,
         loader: projectsLoader
+    },
+    {
+        path: "projects/:projectId",
+        element: <ProjectDetails />,
+        loader: ProjectDetailsLoader
     }
 ]
 
