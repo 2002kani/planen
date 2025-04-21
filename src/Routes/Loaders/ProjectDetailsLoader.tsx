@@ -30,7 +30,7 @@ const ProjectDetailsLoader: LoaderFunction = async ({ params }) => {
 
     const projects = await getProject(projectId);
     
-    return projects
+    return { projects }
 }
 
 export default ProjectDetailsLoader

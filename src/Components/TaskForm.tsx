@@ -100,7 +100,7 @@ const TaskForm: React.FC<ITaskFormProps> = ({
     setTaskContent("");
   }, [taskContent, onSubmit, formData]);
 
-  const selectedProject = projectId ? projects?.documents.find(project => project.$id === projectId) : null;
+  //const selectedProject = projectId ? projects?.documents.find(project => project.$id === projectId) : null;
     
   useEffect(() => {
     if (projectOpened) {
