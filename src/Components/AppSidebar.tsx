@@ -1,4 +1,4 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { cn } from "@/lib/utils"
 import { useState } from "react"
 import { Models } from "appwrite"
@@ -28,6 +28,7 @@ import { Tooltip, TooltipTrigger, TooltipContent } from "@/components/ui/tooltip
 import TaskFormPopup from "@/Components/TaskFormPopup"
 import ProjectFormPopup from "./ProjectFormPopup"
 import ProjectCard from "./ProjectCard"
+import { Button } from "./ui/button"
 
 type DataType = {
     projects: Models.DocumentList<Models.Document>;
@@ -39,6 +40,7 @@ const AppSidebar = () => {
 
     const loaderData = useLoaderData() as DataType;
     const { projects } = loaderData
+    const navigate = useNavigate();
     
   return (
     <Sidebar>
@@ -108,10 +110,18 @@ const AppSidebar = () => {
                     <CollapsibleContent>
                         <SidebarGroupContent>
                             <SidebarMenu>
-                            <div className="mt-1">
-                                {projects && projects.documents && projects.documents.map((project) => (
-                                    <ProjectCard key={project.$id} project={project} variant="compact"/>
-                                ))}
+                                <div className="mt-1">
+                                    {projects && projects.documents && projects.documents.map((project) => (
+                                        <ProjectCard key={project.$id} project={project} variant="compact"/>
+                                    ))}
+                                    { projects.total >= 1 && (
+                                        <p 
+                                        className="ml-2 mt-1 text-sm text-muted-foreground cursor-pointer hover:underline"
+                                        onClick={() => navigate("/app/projects/")}
+                                        >
+                                            Projektübersicht
+                                        </p>
+                                    )}
                                 </div>
                             </SidebarMenu>
                         </SidebarGroupContent>
