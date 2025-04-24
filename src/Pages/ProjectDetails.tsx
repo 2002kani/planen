@@ -79,7 +79,7 @@ const ProjectDetails = () => {
                         content: "",
                         due_date: null,
                         projectId: projects.$id
-                    }}
+                    }} 
                     onSubmit={(formData) => {
                         fetcher.submit(JSON.stringify(formData), {
                             action: "/app",
