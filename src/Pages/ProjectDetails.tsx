@@ -68,8 +68,8 @@ const ProjectDetails = () => {
 
                 {!projectTasks.length && !taskFormShow && (
                     <EmptyTaskState type="project" />
-                )}
-
+                )} 
+ 
                 {taskFormShow && (
                     <TaskForm
                     className="mt-2"
