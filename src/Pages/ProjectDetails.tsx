@@ -76,10 +76,10 @@ const ProjectDetails = () => {
                     mode="create"
                     onCancel={() => setTaskFormShow(false)}
                     defaultFormData={{
-                        content: "",
+                        content: "", 
                         due_date: null,
                         projectId: projects.$id
-                    }} 
+                    }}  
                     onSubmit={(formData) => {
                         fetcher.submit(JSON.stringify(formData), {
                             action: "/app",
