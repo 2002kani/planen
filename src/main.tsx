@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router'
 import { ClerkProvider } from '@clerk/clerk-react'
 import { dark } from '@clerk/themes'
 import { HelmetProvider } from 'react-helmet-async'
-
+ 
 import router from './Routes/index.tsx'
 
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
