@@ -18,7 +18,7 @@ Eine minimalistische und erweiterbare To-Do- & Planungs-App. Sie bietet eine mod
 **Server:** Appwrite
 
 
-## Installation
+## Projekt Klonen
 
 Schnell und einfach lokal starten:
 
